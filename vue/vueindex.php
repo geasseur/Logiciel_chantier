@@ -25,60 +25,10 @@
         <!-- debut du chantier -->
         <label for="">debut chantier</label>
         <input type="text" name="date_depart" value=""><br>
-        <!-- <label for="">start chantier</label><br>
-        <label for="">day</label>
-        <input type="text" maxlength="2" name="d_day" />
-        <label for="">month</label>
-        <input type="text" maxlength="2" name="d_month" />
-        <label for="">year</label>
-        <input type="text" maxlength="4" name="d_year" /><br> -->
-
+        
         <!-- fin chantier -->
         <label for="">fin chantier</label>
         <input type="text" name="date_fin" value=""><br>
-        <!-- <label for="">end chantier</label><br>
-        <label for="">day</label>
-        <input type="text" maxlength="2" name="f_day" />
-        <label for="">month</label>
-        <input type="text" maxlength="2" name="f_month" />
-        <label for="">year</label>
-        <input type="text" maxlength="4" name="f_year" /><br> -->
-        <!-- <select name="jour">
-          <option value="1jour">un jour</option>
-          <option value="2jour">deux jour</option>
-          <option value="3jour">trois jour</option>
-          <option value="4jour">quatre jour</option>
-          <option value="5jour">cinq jour</option>
-          <option value="6jour">six jour</option>
-          <option value="7jour">sept jour</option>
-        </select>
-        <select name="semaine">
-          <option value="1semaine">une semaine</option>
-          <option value="2semaine">deux semaines</option>
-          <option value="3semaine">trois semaines</option>
-          <option value="4semaine">quatre semaines</option>
-        </select>
-        <select name="mois">
-          <option value="1mois">un mois</option>
-          <option value="2mois">deux mois</option>
-          <option value="3mois">trois mois</option>
-          <option value="4mois">quatre mois</option>
-          <option value="5mois">cinq mois</option>
-          <option value="6mois">six mois</option>
-          <option value="7mois">sept mois</option>
-          <option value="8mois">huit mois</option>
-          <option value="9mois">neuf mois</option>
-          <option value="10mois">dix mois</option>
-          <option value="11mois">onze mois</option>
-          <option value="12 mois">douze mois</option>
-        </select>
-        <select name="annee">
-          <option value="1an">une année</option>
-          <option value="2an">deux années</option>
-          <option value="3an">trois années</option>
-          <option value="4an">quatre années</option>
-          <option value="5an">cinq années</option>
-        </select><br> -->
         <label for="">resumé du chantier</label><br>
         <textarea name="resume" rows="8" cols="45">
         </textarea><br>
