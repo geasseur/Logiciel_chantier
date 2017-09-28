@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link rel="stylesheet" href="../bootstrap4/css/bootstrap.css">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
@@ -24,7 +24,7 @@
 
         <!-- debut du chantier -->
         <label for="">debut chantier</label>
-        <input type="text" name="date_depart" value="">
+        <input type="text" name="date_depart" value=""><br>
         <!-- <label for="">start chantier</label><br>
         <label for="">day</label>
         <input type="text" maxlength="2" name="d_day" />
@@ -35,7 +35,7 @@
 
         <!-- fin chantier -->
         <label for="">fin chantier</label>
-        <input type="text" name="date_fin" value="">
+        <input type="text" name="date_fin" value=""><br>
         <!-- <label for="">end chantier</label><br>
         <label for="">day</label>
         <input type="text" maxlength="2" name="f_day" />
@@ -92,11 +92,11 @@
       </form>
     </header>
     <body>
-      <main>
+      <main class='container column justify-content-center align-items-center'>
         <?php
         while ($donnees = $chantier->fetch()) {
           ?>
-          <section>
+          <section class='col-xs-12 col-md-5 col-lg-3 bg-warning d-inline-block'>
             <h2><?php echo $donnees['nom']; ?></h2>
             <small>Depart :<?php echo $donnees['date_depart']; ?></small>
             <small>Fin :<?php echo $donnees['date_fin']; ?></small>
