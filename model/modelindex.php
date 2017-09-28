@@ -13,17 +13,18 @@ catch (Exception $e){
     return $chantier;
   }
 
-  function addedChantier(){
+  function addedChantier($nom, $responsable, $date_depart, $date_fin, $resume, $type_chantier){
     global $bdd;
-    $chantier = $bdd->prepare('INSERT INTO chantier(nom, responsable, resume, type) values (:nom, :responsable, :date_depart, :date_fin, :resume, :type)');
+    $chantier = $bdd->prepare('INSERT INTO Chantier(nom, responsable, date_depart, date_fin, resume, type_chantier) values (:nom, :responsable, :date_depart, :date_fin, :resume, :type_chantier)');
     $chantier->execute(array(
       'nom'=>$nom,
       'responsable'=>$responsable,
-      // 'date_depart'=>,
-      // 'date_fin'=>,
+      'date_depart'=>$date_depart,
+      'date_fin'=>$date_fin,
       'resume'=>$resume,
-      'type_chantier'=>$type
+      'type_chantier'=>$type_chantier
     ));
+    header('Location:index.php');
   }
 
 ?>
