@@ -6,24 +6,32 @@ try{
 catch (Exception $e){
     die('Erreur : ' . $e->getMessage());
   }
-
+// Function for display all chantier
   function displayChantier(){
     global $bdd;
-    $chantier = $bdd->query("SELECT id, nom, responsable, date_depart, date_fin, resume, type_chantier from Chantier");
+    $chantier = $bdd->query("SELECT id, nom, responsable, date_depart, date_fin, resume, type_chantier from Chantier where en_cours = 1");
     return $chantier;
   }
 
+// function for added a new chantier
   function addedChantier($nom, $responsable, $date_depart, $date_fin, $resume, $type_chantier){
     global $bdd;
-    $chantier = $bdd->prepare('INSERT INTO Chantier(nom, responsable, date_depart, date_fin, resume, type_chantier) values (:nom, :responsable, :date_depart, :date_fin, :resume, :type_chantier)');
+    $chantier = $bdd->prepare('INSERT INTO Chantier(nom, responsable, date_depart, date_fin, resume,en_cours, type_chantier) values (:nom, :responsable, :date_depart, :date_fin, :resume,:en_cours, :type_chantier)');
     $chantier->execute(array(
       'nom'=>$nom,
       'responsable'=>$responsable,
       'date_depart'=>$date_depart,
       'date_fin'=>$date_fin,
       'resume'=>$resume,
+      'en_cours'=>1,
       'type_chantier'=>$type_chantier
     ));
+    header('Location:index.php');
+  }
+
+  function endedChantier($id){
+    global $bdd;
+    $Chantier = $bdd->query('UPDATE Chantier set en_cours = 0 where id = "'.$id.'"');
     header('Location:index.php');
   }
 

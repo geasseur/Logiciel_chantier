@@ -12,7 +12,7 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <header class='container-fluid'>
@@ -47,7 +47,7 @@
         <?php
         while ($donnees = $chantier->fetch()) {
           ?>
-          <section class='col-xs-12 col-md-5 col-lg-3 bg-warning d-inline-block'>
+          <section class='col-xs-12 col-md-5 col-lg-3 bg-warning d-inline-block mt-2 mb-2'>
             <h2><?php echo $donnees['nom']; ?></h2>
             <small>Depart :<?php echo $donnees['date_depart']; ?></small>
             <small>Fin :<?php echo $donnees['date_fin']; ?></small>
@@ -56,11 +56,11 @@
             <p>Chantier de type: <?php echo $donnees['type_chantier']; ?></p>
             <section class='row'>
               <form class='col-5' action="control/controlcategorie.php" method="post">
-                <input style='display:none;' type="id" value="<?php echo $donnees['id'] ?>">
+                <input style='display:none;' type="text" name='id' value="<?php echo $donnees['id'] ?>">
                 <input class='btn btn-primary' type="submit" value="Categorie">
               </form>
-              <form class="col-6" action="control/controlindex.php" method="post">
-                <input style='display:none;' type="id" value="<?php echo $donnees['id'] ?>">
+              <form class="col-6" action="index.php" method="post">
+                <input style='display:none;' type="text" name='id' value="<?php echo $donnees['id'] ?>">
                 <input class='btn btn-danger' type="submit" value="Terminé">
               </form>
             </section>

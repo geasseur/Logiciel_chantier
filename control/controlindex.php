@@ -13,4 +13,8 @@ if (isset($_POST['nom']) and isset($_POST['responsable']) and isset($_POST['date
   $type_chantier = $_POST['type_chantier'];
   addedChantier($nom, $responsable, $date_depart, $date_fin, $resume, $type_chantier);
 }
+
+if (isset($_POST['id']) and !empty($_POST['id'])){
+      endedChantier($_POST['id']);
+}
 include('vue/vueindex.php'); ?>

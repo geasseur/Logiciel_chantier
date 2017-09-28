@@ -10,52 +10,52 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="/css/style.css">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="../stylesheet" href="css/normalize.css">
+        <link rel="../stylesheet" href="css/main.css">
+        <link rel="../stylesheet" href="/css/style.css">
+        <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <header class='container-fluid'>
       <h1>liste Categorie</h1>
-      <form id="nouveauChantier" action="index.php" method="post">
+      <form id="nouveauChantier" action="../control/controlcategorie.php" method="post">
         <label for="">nom</label>
         <input type="text" name="nom" value=""><br>
         <label for="">responsable</label>
         <input type="text" name="responsable" value=""><br>
-
-        <!-- debut du chantier -->
-        <label for="">debut chantier</label>
-        <input type="text" name="date_depart" value=""><br>
-
-        <!-- fin chantier -->
-        <label for="">fin chantier</label>
-        <input type="text" name="date_fin" value=""><br>
-        <label for="">resumé du chantier</label><br>
-        <textarea name="resume" rows="8" cols="45">
+        <label for="">Objectif</label><br>
+        <textarea name="objectif" rows="8" cols="45">
         </textarea><br>
-        <label for="">type de chantier</label>
-        <select name="type_chantier">
-          <option value="maison">maison</option>
-          <option value="immeuble">immeuble</option>
-          <option value="usine">usine</option>
-        </select><br>
-        <input type="submit" value="added Chantier">
+        <label for="">Catégorie</label>
+        <select class="type" name="">
+          <option value="fondation">Fondation</option>
+          <option value="maconnerie">Maçonnerie</option>
+          <option value="electricite">Electricite</option>
+          <option value="eau">Eau</option>
+          <option value="fenetre">Fenetre</option>
+          <option value="toiture">Toiture</option>
+        </select>
+        <input type="submit" value="added Categorie">
+      </form>
+      <form class="" action="../index.php" method="post">
+        <input type="submit" value="retour Chantier">
       </form>
     </header>
     <body>
       <main class='container column justify-content-center align-items-center'>
         <?php
-        while ($donnees = $categorie->fetch()) {
+        foreach($categories as $donnees){
           ?>
           <section class='col-xs-12 col-md-5 col-lg-3 bg-warning d-inline-block'>
             <h2><?php echo $donnees['nom']; ?></h2>
-            <small>Depart :<?php echo $donnees['date_depart']; ?></small>
-            <small>Fin :<?php echo $donnees['date_fin']; ?></small>
             <p><?php echo $donnees['objectif']; ?></p>
             <p><?php echo $donnees['responsable']; ?></p>
             <section class='row'>
-              <form class="col-6" action="control/controlindex.php" method="post">
-                <input style='display:none;' type="id" value="<?php echo $donnees['id'] ?>">
+              <form action="../control/controltache.php" method="post">
+                <input style='display:none;' type='text' name="id" value="<?php echo $donnees['id'] ?>">
+                <input class='btn btn-primary' type="submit" value="Afficher Tache">
+              </form>
+              <form class="col-6" action="../control/controlindex.php" method="post">
+                <input style='display:none;' type='text' name="id" value="<?php echo $donnees['id'] ?>">
                 <input class='btn btn-danger' type="submit" value="Terminé">
               </form>
             </section>
@@ -67,9 +67,9 @@
         <p class='text-white'>Propriété de Wolf head studio</p>
       </footer>
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="../js/plugins.js"></script>
+        <script src="../js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
