@@ -9,7 +9,7 @@ catch (Exception $e){
 
   function displayChantier(){
     global $bdd;
-    $chantier = $bdd->query("SELECT nom, responsable, date_depart, date_fin, resume, type_chantier from Chantier");
+    $chantier = $bdd->query("SELECT id, nom, responsable, date_depart, date_fin, resume, type_chantier from Chantier");
     return $chantier;
   }
 

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Index</title>
+        <title>Categorie</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../bootstrap4/css/bootstrap.css">
@@ -16,7 +16,7 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <header class='container-fluid'>
-      <h1>liste Chantier</h1>
+      <h1>liste Categorie</h1>
       <form id="nouveauChantier" action="index.php" method="post">
         <label for="">nom</label>
         <input type="text" name="nom" value=""><br>
@@ -45,20 +45,15 @@
     <body>
       <main class='container column justify-content-center align-items-center'>
         <?php
-        while ($donnees = $chantier->fetch()) {
+        while ($donnees = $categorie->fetch()) {
           ?>
           <section class='col-xs-12 col-md-5 col-lg-3 bg-warning d-inline-block'>
             <h2><?php echo $donnees['nom']; ?></h2>
             <small>Depart :<?php echo $donnees['date_depart']; ?></small>
             <small>Fin :<?php echo $donnees['date_fin']; ?></small>
-            <p><?php echo $donnees['resume']; ?></p>
+            <p><?php echo $donnees['objectif']; ?></p>
             <p><?php echo $donnees['responsable']; ?></p>
-            <p>Chantier de type: <?php echo $donnees['type_chantier']; ?></p>
             <section class='row'>
-              <form class='col-5' action="control/controlcategorie.php" method="post">
-                <input style='display:none;' type="id" value="<?php echo $donnees['id'] ?>">
-                <input class='btn btn-primary' type="submit" value="Categorie">
-              </form>
               <form class="col-6" action="control/controlindex.php" method="post">
                 <input style='display:none;' type="id" value="<?php echo $donnees['id'] ?>">
                 <input class='btn btn-danger' type="submit" value="Terminé">
