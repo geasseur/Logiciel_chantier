@@ -16,13 +16,13 @@ catch (Exception $e){
 
   function addedCategorie($id, $nom, $responsable, $objectif){
     global $bdd;
-    $chantier = $bdd->prepare('INSERT INTO Categorie(id_Chantier,nom ,responsable, objectif) values (:id_Chantier,:nom ,:responsable, :objectif)');
-    $chantier->execute(array(
+    $categories = $bdd->prepare('INSERT INTO Categorie(id_Chantier,nom ,responsable, objectif) values (:id_Chantier,:nom ,:responsable, :objectif)');
+    $categories->execute(array(
       'id_Chantier'=>$id,
       'nom'=>$nom,
       'responsable'=>$responsable,
       'objectif'=>$objectif
     ));
-    header('Location:../control/controlcategorie.php');
+    header('Location:../index.php');
   }
   ?>

@@ -18,22 +18,24 @@
     <header class='container-fluid'>
       <h1>liste Categorie</h1>
       <form id="nouveauChantier" action="../control/controlcategorie.php" method="post">
-        <label for="">nom</label>
-        <input type="text" name="nom" value=""><br>
+        <input type="text" name="id_Chantier" value="<?php echo $_SESSION['id_Chantier']?>">
+
+        <label for="">Catégorie</label>
+        <select name="nom">
+          <option value="Fondation">Fondation</option>
+          <option value="Maconnerie">Maçonnerie</option>
+          <option value="Electricite">Electricite</option>
+          <option value="Eau">Eau</option>
+          <option value="Fenetre">Fenetre</option>
+          <option value="Toiture">Toiture</option>
+        </select><br>
+
         <label for="">responsable</label>
         <input type="text" name="responsable" value=""><br>
+
         <label for="">Objectif</label><br>
         <textarea name="objectif" rows="8" cols="45">
         </textarea><br>
-        <label for="">Catégorie</label>
-        <select class="type" name="">
-          <option value="fondation">Fondation</option>
-          <option value="maconnerie">Maçonnerie</option>
-          <option value="electricite">Electricite</option>
-          <option value="eau">Eau</option>
-          <option value="fenetre">Fenetre</option>
-          <option value="toiture">Toiture</option>
-        </select>
         <input type="submit" value="added Categorie">
       </form>
       <form class="" action="../index.php" method="post">
@@ -53,10 +55,6 @@
               <form action="../control/controltache.php" method="post">
                 <input style='display:none;' type='text' name="id" value="<?php echo $donnees['id'] ?>">
                 <input class='btn btn-primary' type="submit" value="Afficher Tache">
-              </form>
-              <form class="col-6" action="../control/controlindex.php" method="post">
-                <input style='display:none;' type='text' name="id" value="<?php echo $donnees['id'] ?>">
-                <input class='btn btn-danger' type="submit" value="Terminé">
               </form>
             </section>
           </section>
