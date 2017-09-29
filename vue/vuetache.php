@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Categorie</title>
+        <title>Taches</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../bootstrap4/css/bootstrap.css">
@@ -21,11 +21,14 @@
     <body>
       <main class='container column justify-content-center align-items-center'>
         <?php
-        foreach($taches as $donnees){
+        while ($donnees = $test_taches->fetch()) {
+          echo 'test : ';
+          var_dump($test_taches);
           ?>
+
           <article>
               <h2><?php echo $donnees['objectif']; ?></h2>
-              <p>doit être fait pendant<?php echo $donnees['date_exe']; ?></p>
+              <p>doit être fait pendant<?php echo $donnees['date_exe']; ?> par <?php echo $donnees['executant'];?></p>
           </article>
           <?php
         }?>

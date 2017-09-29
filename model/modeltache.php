@@ -10,6 +10,7 @@ catch (Exception $e){
 
   function displayTache($idCategorie){
     global $bdd;
-    $taches = $bdd->query('SELECT id_Categorie, objectif,date_exe from Tache WHERE id_Categorie = "'.$idCategorie.'"');
-    return $taches->fetchAll();
+    $taches = $bdd->query('SELECT * FROM Tache WHERE id_Categorie = '.$idCategorie);
+    var_dump($taches->fetchAll());
+    return $taches;
   }

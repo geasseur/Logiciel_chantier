@@ -15,18 +15,6 @@ if (isset($_POST['nom']) and isset($_POST['responsable']) and isset($_POST['date
 }
 
 if (isset($_POST['id']) and !empty($_POST['id'])){
-  ?>
-  <script type="text/javascript">
-    function deleteConfirmation(){
-        confirm("êtes vous sûr de vouloir marquer ce chantier comme terminé, l'action est irreversible");
-        if (Check==false) {
-          <?php
-          endedChantier($_POST['id']);
-          ?>
-        }
-    }
-  </script>
-  <?php
       endedChantier($_POST['id']);
 }
 include('vue/vueindex.php'); ?>
