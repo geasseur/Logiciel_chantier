@@ -16,9 +16,9 @@
         <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <header class='container-fluid'>
-      <h1>liste Categorie</h1>
-      <form id="nouveauChantier" action="../control/controlcategorie.php" method="post">
-        <input type="text" name="id_Chantier" value="<?php echo $_SESSION['id_Chantier']?>">
+      <h1><?php echo $_SESSION['nomChantier']; ?></h1>
+      <form id="nouveauChantier" class='' action="../control/controlcategorie.php" method="post">
+        <input class='invisible' type="text" name="id_Chantier" value="<?php echo $_SESSION['id_Chantier']?>">
 
         <label for="">Catégorie</label>
         <select name="nom">
@@ -28,14 +28,14 @@
           <option value="Eau">Eau</option>
           <option value="Fenetre">Fenetre</option>
           <option value="Toiture">Toiture</option>
-        </select><br>
+        </select>
 
         <label for="">responsable</label>
-        <input type="text" name="responsable" value=""><br>
+        <input type="text" name="responsable" value="">
 
-        <label for="">Objectif</label><br>
-        <textarea name="objectif" rows="8" cols="45">
-        </textarea><br>
+        <label for="">Objectif</label>
+        <textarea name="objectif" rows="2" cols="30">
+        </textarea>
         <input type="submit" value="added Categorie">
       </form>
       <form class="" action="../index.php" method="post">
@@ -50,7 +50,7 @@
           <section class='col-xs-12 col-md-5 col-lg-3 bg-warning d-inline-block'>
             <h2><?php echo $donnees['nom']; ?></h2>
             <p><?php echo $donnees['objectif']; ?></p>
-            <p><?php echo $donnees['responsable']; ?></p>
+            <p>responsable : <?php echo $donnees['responsable']; ?></p>
             <section class='row'>
               <form action="../control/controltache.php" method="post">
                 <input style='display:none;' type='text' name="id" value="<?php echo $donnees['id'] ?>">

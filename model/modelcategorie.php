@@ -23,6 +23,6 @@ catch (Exception $e){
       'responsable'=>$responsable,
       'objectif'=>$objectif
     ));
-    header('Location:../index.php');
+    header('../index.php');
   }
   ?>

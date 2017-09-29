@@ -57,6 +57,7 @@
             <section class='row'>
               <form class='col-5' action="control/controlcategorie.php" method="post">
                 <input style='display:none;' type="text" name='id' value="<?php echo $donnees['id'] ?>">
+                <input style='display:none;' type="text" name='nom' value="<?php echo $donnees['nom'] ?>">
                 <input class='btn btn-primary' type="submit" value="Categorie">
               </form>
               <form class="col-6" action="index.php" method="post">
