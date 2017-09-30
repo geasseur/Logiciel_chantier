@@ -23,6 +23,6 @@ catch (Exception $e){
       'responsable'=>$responsable,
       'objectif'=>$objectif
     ));
-    header('../index.php');
+    header('../control/controlcategorie.php');
   }
   ?>

@@ -20,10 +20,18 @@
     </header>
     <body>
       <main class='container column justify-content-center align-items-center'>
+        <form class="" action="../control/controltache.php" method="post">
+          <input type="text" name="id_Categorie" value="<?php echo $_SESSION['idCategorie'] ?>">
+          <label for="">objectif</label>
+          <input type="text" name="objectif" value=""><br>
+          <label for="">executant</label>
+          <input type="text" name="executant" value=""><br>
+          <label for="">date d'execution</label>
+          <input type="text" name="date_exe" value="">
+          <input type="submit" value="nouvelle tache">
+        </form>
         <?php
         while ($donnees = $test_taches->fetch()) {
-          echo 'test : ';
-          var_dump($test_taches);
           ?>
 
           <article>

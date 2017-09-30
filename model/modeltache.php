@@ -14,3 +14,15 @@ catch (Exception $e){
     var_dump($taches->fetchAll());
     return $taches;
   }
+
+  function addedtache($idCategorie, $objectif, $executant, $date_exe){
+    global $bdd;
+    $categories = $bdd->prepare('INSERT INTO Tache(id_Categorie,objectif, executant,date_exe) values (:id_Categorie,:objectif,:executant, :date_exe)');
+    $categories->execute(array(
+      'id_Categorie'=>$idCategorie,
+      'objectif'=>$objectif,
+      'executant'=>$executant,
+      'date_exe'=>$date_exe
+    ));
+    header('../control/controltache.php');
+  }
