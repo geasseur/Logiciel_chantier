@@ -24,11 +24,11 @@
         <input type="text" name="responsable" value=""><br>
 
         <!-- debut du chantier -->
-        <label for="">debut chantier</label>
+        <label for="">debut chantier(ex : 31/12/1999)</label>
         <input type="text" name="date_depart" value=""><br>
 
         <!-- fin chantier -->
-        <label for="">fin chantier</label>
+        <label for="">fin chantier(ex : 31/12/1999)</label>
         <input type="text" name="date_fin" value=""><br>
         <label for="">resumé du chantier</label><br>
         <textarea name="resume" rows="8" cols="45">

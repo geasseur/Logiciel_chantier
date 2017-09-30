@@ -30,6 +30,9 @@
           <input type="text" name="date_exe" value="">
           <input type="submit" value="nouvelle tache">
         </form>
+        <form class="" action="../control/controlcategorie.php" method="post">
+          <input type="submit" name="" value="retour categorie">
+        </form>
         <?php
         while ($donnees = $test_taches->fetch()) {
           ?>
