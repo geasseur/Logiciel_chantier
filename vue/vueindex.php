@@ -53,6 +53,27 @@
     </header>
     <body>
       <main class='container column justify-content-center align-items-center'>
+        <section>
+          <h2>Corbeille</h2>
+          <?php
+          foreach ($corbeilleChantier as $donnees) {
+            ?>
+              <article class="">
+                <h2><?php echo $donnees['nom']; ?></h2>
+                <small>Depart :<?php echo $donnees['date_depart']; ?></small>
+                <small>Fin :<?php echo $donnees['date_fin']; ?></small>
+                <p><?php echo $donnees['resume']; ?></p>
+                <p><?php echo $donnees['responsable']; ?></p>
+                <p>Chantier de type: <?php echo $donnees['type_chantier']; ?></p>
+                <form class="" action="index.php" method="post">
+                    <input style='display:none;' type="text" name='id_Chantier_Corbeille' value="<?php echo $donnees['id'] ?>">
+                    <input type="submit" value="sortir Corbeille">
+                </form>
+              </article>
+            <?php
+          } ?>
+        </section>
+        <h2>Chantier en cours</h2>
         <?php
         while ($donnees = $chantier->fetch()) {
           ?>
@@ -72,13 +93,8 @@
               </form>
               <!-- marqué comme terminé  -->
               <form class="col-6" action="index.php" method="post">
-                <input style=';' type="text" name='id_termine' value="<?php echo $donnees['id'] ?>">
+                <input style='display:none'; type="text" name='id_termine' value="<?php echo $donnees['id'] ?>">
                 <input class='btn btn-danger' type="submit" value="Terminé">
-              </form>
-              <!-- effacer définitivement chantier  -->
-              <form class="col-6" action="index.php" method="post">
-                <input style='' type="text" name='id_efface' value="<?php echo $donnees['id'] ?>">
-                <input class='btn btn-danger' type="submit" value="Effacer">
               </form>
             </section>
           </section>

@@ -35,10 +35,21 @@ catch (Exception $e){
     header('Location:index.php');
   }
 
-  function deletedChantier($id){
+  function displayCorbeille(){
     global $bdd;
-    // $Chantier = $bdd->query('DELETE FROM Categorie where id_Chantier = "'.$id.'"');
-    $Chantier = $bdd->query('DELETE FROM Chantier as Ch join Categorie as Ca on Ch.id = id_Chantier join Tache as T on Ca.id = id_Categorie where Ch.id = "'.$id.'"');
+    $corbeilleChantier = $bdd->query("SELECT id, nom, responsable, date_depart, date_fin, resume, type_chantier from Chantier where en_cours = 0");
+    return $corbeilleChantier->fetchAll();
+  }
+
+  function restartChantier($id){
+    global $bdd;
+    $Chantier = $bdd->query('UPDATE Chantier set en_cours = 1 where id = "'.$id.'"');
+    header('Location:index.php');
+  }
+
+  function clearCorbeille(){
+    global $bdd;
+    $Chantier = $bdd->query('DELETE FROM Chantier as Ch inner join Categorie as Ca on Ch.id = id_Chantier inner join Tache as T on Ca.id = id_Categorie where en_cours = 0 ');
     header('Location:index.php');
   }
 
