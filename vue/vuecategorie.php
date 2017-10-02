@@ -16,7 +16,8 @@
         <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <header class='container-fluid'>
-      <h1><?php echo $_SESSION['nomChantier']; ?></h1>
+      <h1>Categorie</h1>
+      <h2><?php echo $_SESSION['nomChantier']; ?></h1>
       <form id="nouveauChantier" class='' action="../control/controlcategorie.php" method="post">
         <input class='invisible' type="text" name="id_Chantier" value="<?php echo $_SESSION['id_Chantier']?>">
 
@@ -47,7 +48,7 @@
         <?php
         foreach($categories as $donnees){
           ?>
-          <section class='col-xs-12 col-md-5 col-lg-3 <?php if ($donnees['termine'] = 0){
+          <section class='col-xs-12 col-md-5 col-lg-3 <?php if ($donnees['termine'] == 0){
             ?>
             bg-success
             <?php
@@ -64,11 +65,11 @@
               <?php if ($donnees['termine'] == 0){
                 ?>
                 <form action="../control/controltache.php" method="post">
-                  <input class='' type='text' name="idCategorie" value="<?php echo $donnees['id_Categorie'] ?>">
+                  <input style='display:none' type='text' name="idCategorie" value="<?php echo $donnees['id_Categorie'] ?>">
                   <input class='btn btn-primary' type="submit" value="Afficher Tache">
                 </form>
                 <form class="" action="../control/controlcategorie.php" method="post">
-                  <input style='' type='text' name="id_Corbeille_Categorie" value="<?php echo $donnees['id_Categorie'] ?>">
+                  <input style='display:none' type='text' name="id_Corbeille_Categorie" value="<?php echo $donnees['id_Categorie'] ?>">
                   <input class='btn btn-danger' type="submit" value="termine">
                 </form>
                 <?php

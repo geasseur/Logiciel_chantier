@@ -15,7 +15,7 @@ if (isset($_POST['id_Corbeille_Categorie']) and !empty($_POST['id_Corbeille_Cate
 }
 
 if (isset($_POST['id_Remettre_Categorie']) and !empty($_POST['id_Remettre_Categorie'])) {
-  restartChantier($_POST['id_Remettre_Categorie']);
+  restartCategorie($_POST['id_Remettre_Categorie']);
 }
 include('../vue/vuecategorie.php');
  ?>
