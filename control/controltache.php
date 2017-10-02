@@ -11,5 +11,9 @@ if (isset($_POST['id_Categorie']) and isset($_POST['objectif']) and isset($_POST
   $date_exe = date_format($date_exe, 'Y-m-d');
   addedtache($_POST['id_Categorie'],$_POST['objectif'],$_POST['executant'],$date_exe);
 }
+
+if (isset($_POST['id_tache_termine']) and !empty($_POST['id_tache_termine'])) {
+  endedTache($_POST['id_tache_termine']);
+}
 include('../vue/vuetache.php');
  ?>

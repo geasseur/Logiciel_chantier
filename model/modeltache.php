@@ -17,12 +17,19 @@ catch (Exception $e){
 
   function addedtache($idCategorie, $objectif, $executant, $date_exe){
     global $bdd;
-    $categories = $bdd->prepare('INSERT INTO Tache(id_Categorie,objectif, executant,date_exe) values (:id_Categorie,:objectif,:executant, :date_exe)');
+    $categories = $bdd->prepare('INSERT INTO Tache(id_Categorie,objectif, executant,date_exe,termine) values (:id_Categorie,:objectif,:executant, :date_exe,:termine)');
     $categories->execute(array(
       'id_Categorie'=>$idCategorie,
       'objectif'=>$objectif,
       'executant'=>$executant,
-      'date_exe'=>$date_exe
+      'date_exe'=>$date_exe,
+      'termine'=>1
     ));
+    header('Location:../control/controltache.php');
+  }
+
+  function endedTache($id){
+    global $bdd;
+    $tache = $bdd->query('DELETE FROM Tache where id = "'.$id.'"');
     header('Location:../control/controltache.php');
   }

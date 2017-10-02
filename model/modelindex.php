@@ -35,11 +35,11 @@ catch (Exception $e){
     header('Location:index.php');
   }
 
-  function displayCorbeille(){
-    global $bdd;
-    $corbeilleChantier = $bdd->query("SELECT id, nom, responsable, date_depart, date_fin, resume, type_chantier from Chantier where en_cours = 0");
-    return $corbeilleChantier->fetchAll();
-  }
+  // function displayCorbeille(){
+  //   global $bdd;
+  //   $corbeilleChantier = $bdd->query("SELECT id, nom, responsable, date_depart, date_fin, resume, type_chantier from Chantier where en_cours = 0");
+  //   return $corbeilleChantier->fetchAll();
+  // }
 
   function restartChantier($id){
     global $bdd;

@@ -41,6 +41,10 @@
           <article>
               <h2><?php echo $donnees['objectif']; ?></h2>
               <p>doit être fait à la date : <?php echo $donnees['date_exe']; ?></p><p>par <?php echo $donnees['executant'];?></p>
+                <form class="" action="../control/controltache.php" method="post">
+                  <input style='display:none;' type="text" name="id_tache_termine" value="<?php echo $donnees['id'] ?>">
+                  <input type="submit" value="terminer tache">
+                </form>
           </article>
           <?php
         }?>
