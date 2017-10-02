@@ -34,12 +34,13 @@
           <input type="submit" name="" value="retour categorie">
         </form>
         <?php
-        while ($donnees = $test_taches->fetch()) {
+        // echo 'test : '.var_dump($test_taches);
+        foreach($test_taches as $donnees) {
           ?>
 
           <article>
               <h2><?php echo $donnees['objectif']; ?></h2>
-              <p>doit être fait pendant<?php echo $donnees['date_exe']; ?> par <?php echo $donnees['executant'];?></p>
+              <p>doit être fait à la date : <?php echo $donnees['date_exe']; ?></p><p>par <?php echo $donnees['executant'];?></p>
           </article>
           <?php
         }?>

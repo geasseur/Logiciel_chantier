@@ -41,6 +41,15 @@
         </select><br>
         <input type="submit" value="added Chantier">
       </form>
+      <form class="" action="index.php" method="post">
+        <label for="">montrer tous les chantiers</label>
+        <input type="checkbox" name="tous" value="">
+        <label for="">montrer seulement les chantier en cours</label>
+        <input type="checkbox" name="encours" value="">
+        <label for="">les plus urgent</label>
+        <input type="checkbox" name="urgent" value="">
+        <input type="submit" value="Trier">
+      </form>
     </header>
     <body>
       <main class='container column justify-content-center align-items-center'>
@@ -55,14 +64,21 @@
             <p><?php echo $donnees['responsable']; ?></p>
             <p>Chantier de type: <?php echo $donnees['type_chantier']; ?></p>
             <section class='row'>
+              <!-- aller aux catégories du chantier -->
               <form class='col-5' action="control/controlcategorie.php" method="post">
                 <input style='display:none;' type="text" name='id' value="<?php echo $donnees['id'] ?>">
                 <input style='display:none;' type="text" name='nom' value="<?php echo $donnees['nom'] ?>">
                 <input class='btn btn-primary' type="submit" value="Categorie">
               </form>
+              <!-- marqué comme terminé  -->
               <form class="col-6" action="index.php" method="post">
-                <input style='display:none;' type="text" name='id' value="<?php echo $donnees['id'] ?>">
+                <input style=';' type="text" name='id_termine' value="<?php echo $donnees['id'] ?>">
                 <input class='btn btn-danger' type="submit" value="Terminé">
+              </form>
+              <!-- effacer définitivement chantier  -->
+              <form class="col-6" action="index.php" method="post">
+                <input style='' type="text" name='id_efface' value="<?php echo $donnees['id'] ?>">
+                <input class='btn btn-danger' type="submit" value="Effacer">
               </form>
             </section>
           </section>

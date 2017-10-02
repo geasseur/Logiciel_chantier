@@ -11,8 +11,8 @@ catch (Exception $e){
   function displayTache($idCategorie){
     global $bdd;
     $taches = $bdd->query('SELECT * FROM Tache WHERE id_Categorie = '.$idCategorie);
-    var_dump($taches->fetchAll());
-    return $taches;
+    // echo 'test dans le model : '.var_dump($taches->fetchAll());
+    return $taches->fetchAll();
   }
 
   function addedtache($idCategorie, $objectif, $executant, $date_exe){
@@ -24,5 +24,5 @@ catch (Exception $e){
       'executant'=>$executant,
       'date_exe'=>$date_exe
     ));
-    header('../control/controltache.php');
+    header('Location:../control/controltache.php');
   }

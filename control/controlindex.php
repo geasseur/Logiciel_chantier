@@ -14,7 +14,11 @@ if (isset($_POST['nom']) and isset($_POST['responsable']) and isset($_POST['date
   addedChantier($nom, $responsable, $date_depart, $date_fin, $resume, $type_chantier);
 }
 
-if (isset($_POST['id']) and !empty($_POST['id'])){
-      endedChantier($_POST['id']);
+if (isset($_POST['id_termine']) and !empty($_POST['id_termine'])){
+      endedChantier($_POST['id_termine']);
+}
+
+if (isset($_POST['id_efface']) and !empty($_POST['id_efface'])){
+      deletedChantier($_POST['id_efface']);
 }
 include('vue/vueindex.php'); ?>

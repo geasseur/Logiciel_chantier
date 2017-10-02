@@ -35,4 +35,11 @@ catch (Exception $e){
     header('Location:index.php');
   }
 
+  function deletedChantier($id){
+    global $bdd;
+    // $Chantier = $bdd->query('DELETE FROM Categorie where id_Chantier = "'.$id.'"');
+    $Chantier = $bdd->query('DELETE FROM Chantier as Ch join Categorie as Ca on Ch.id = id_Chantier join Tache as T on Ca.id = id_Categorie where Ch.id = "'.$id.'"');
+    header('Location:index.php');
+  }
+
 ?>
