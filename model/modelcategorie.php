@@ -10,7 +10,7 @@ catch (Exception $e){
 // display all categorie on a Chantier
   function displayCategorie($id_Select){
     global $bdd;
-    $categories = $bdd->query("SELECT Categorie.id as id_Categorie,id_Chantier, Chantier.id, Categorie.nom, Categorie.responsable, objectif FROM Chantier inner join Categorie on Chantier.id = id_Chantier where id_Chantier = ".$id_Select." ");
+    $categories = $bdd->query("SELECT Categorie.id as id_Categorie,id_Chantier, Chantier.id, Categorie.nom, Categorie.responsable, objectif, termine FROM Chantier inner join Categorie on Chantier.id = id_Chantier where id_Chantier = ".$id_Select." ");
     return $categories->fetchAll();
   }
 
@@ -23,6 +23,18 @@ catch (Exception $e){
       'responsable'=>$responsable,
       'objectif'=>$objectif
     ));
+    header('Location:../control/controlcategorie.php');
+  }
+
+  function endedCategorie($id){
+    global $bdd;
+    $Chantier = $bdd->query('UPDATE Categorie set termine = 1 where id = "'.$id.'"');
+    header('Location:../control/controlcategorie.php');
+  }
+
+  function restartCategorie($id){
+    global $bdd;
+    $Chantier = $bdd->query('UPDATE Categorie set termine = 0 where id = "'.$id.'"');
     header('Location:../control/controlcategorie.php');
   }
   ?>
