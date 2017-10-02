@@ -53,38 +53,31 @@
     </header>
     <body>
       <main class='container column justify-content-center align-items-center'>
-        <section>
-          <h2>Corbeille</h2>
-          <?php
-          foreach ($corbeilleChantier as $donnees) {
-            ?>
-              <article class="">
-                <h2><?php echo $donnees['nom']; ?></h2>
-                <small>Depart :<?php echo $donnees['date_depart']; ?></small>
-                <small>Fin :<?php echo $donnees['date_fin']; ?></small>
-                <p><?php echo $donnees['resume']; ?></p>
-                <p><?php echo $donnees['responsable']; ?></p>
-                <p>Chantier de type: <?php echo $donnees['type_chantier']; ?></p>
-                <form class="" action="index.php" method="post">
-                    <input style='display:none;' type="text" name='id_Chantier_Corbeille' value="<?php echo $donnees['id'] ?>">
-                    <input type="submit" value="sortir Corbeille">
-                </form>
-              </article>
-            <?php
-          } ?>
-        </section>
         <h2>Chantier en cours</h2>
         <?php
         while ($donnees = $chantier->fetch()) {
           ?>
-          <section class='col-xs-12 col-md-5 col-lg-3 bg-warning d-inline-block mt-2 mb-2'>
+          <section class='col-xs-12 col-md-5 col-lg-3 <?php
+            if ($donnees['en_cours'] == 1) {
+              ?>
+              bg-success
+              <?php
+            }
+            else{
+              ?>
+              bg-danger
+              <?php
+            }
+          ?> d-inline-block mt-2 mb-2'>
             <h2><?php echo $donnees['nom']; ?></h2>
             <small>Depart :<?php echo $donnees['date_depart']; ?></small>
             <small>Fin :<?php echo $donnees['date_fin']; ?></small>
             <p><?php echo $donnees['resume']; ?></p>
             <p><?php echo $donnees['responsable']; ?></p>
             <p>Chantier de type: <?php echo $donnees['type_chantier']; ?></p>
-            <section class='row'>
+              <?php if ($donnees['en_cours'] == 1) {
+                // display button for go to categories or for deleted
+              ?>
               <!-- aller aux catégories du chantier -->
               <form class='col-5' action="control/controlcategorie.php" method="post">
                 <input style='display:none;' type="text" name='id' value="<?php echo $donnees['id'] ?>">
@@ -96,7 +89,15 @@
                 <input style='display:none'; type="text" name='id_termine' value="<?php echo $donnees['id'] ?>">
                 <input class='btn btn-danger' type="submit" value="Terminé">
               </form>
-            </section>
+            <?php }
+            else {
+              ?>
+              <form class="" action="index.php" method="post">
+                <input style='display:none;' type="text" name='id_Chantier_Corbeille' value="<?php echo $donnees['id'] ?>">
+                <input class='btn btn-primary' type="submit" value="Non Terminé">
+              </form>
+              <?php
+            } ?>
           </section>
           <?php
         }?>
