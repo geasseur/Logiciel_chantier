@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="../css/style.css">
         <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <header class='container-fluid'>
+    <header class='container-fluid mb-3'>
       <h1>Categorie</h1>
       <h2><?php echo $_SESSION['nomChantier']; ?></h1>
       <form id="nouveauChantier" class='' action="../control/controlcategorie.php" method="post">
@@ -85,10 +85,10 @@
           </section>
           <?php
         }?>
-        <form class="" action="../index.php" method="post">
-          <input type="submit" value="retour Chantier">
-        </form>
       </main>
+      <form class="mb-3 mt-3" action="../index.php" method="post">
+        <input type="submit" value="retour Chantier">
+      </form>
       <footer class='bg-inverse'>
         <p class='text-white'>Propriété de Wolf head studio</p>
       </footer>
