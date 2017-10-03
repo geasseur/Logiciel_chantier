@@ -39,9 +39,6 @@
         </textarea>
         <input type="submit" value="added Categorie">
       </form>
-      <form class="" action="../index.php" method="post">
-        <input type="submit" value="retour Chantier">
-      </form>
     </header>
     <body>
       <main class='row justify-content-around align-items-center'>
@@ -88,6 +85,9 @@
           </section>
           <?php
         }?>
+        <form class="" action="../index.php" method="post">
+          <input type="submit" value="retour Chantier">
+        </form>
       </main>
       <footer class='bg-inverse'>
         <p class='text-white'>Propriété de Wolf head studio</p>
