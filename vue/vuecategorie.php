@@ -10,13 +10,14 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
-        <link rel="../stylesheet" href="css/normalize.css">
-        <link rel="../stylesheet" href="css/main.css">
-        <link rel="../stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="../css/normalize.css">
+        <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../css/style.css">
         <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <header class='container-fluid'>
-      <h1><?php echo $_SESSION['nomChantier']; ?></h1>
+      <h1>Categorie</h1>
+      <h2><?php echo $_SESSION['nomChantier']; ?></h1>
       <form id="nouveauChantier" class='' action="../control/controlcategorie.php" method="post">
         <input class='invisible' type="text" name="id_Chantier" value="<?php echo $_SESSION['id_Chantier']?>">
 
@@ -43,19 +44,46 @@
       </form>
     </header>
     <body>
-      <main class='container column justify-content-center align-items-center'>
+      <main class='row justify-content-around align-items-center'>
         <?php
         foreach($categories as $donnees){
           ?>
-          <section class='col-xs-12 col-md-5 col-lg-3 bg-warning d-inline-block'>
+          <section class='card col-xs-12 col-md-5 col-lg-3 <?php if ($donnees['termine'] == 0){
+            ?>
+            bg-success
+            <?php
+          }
+          else{
+            ?>
+            bg-warning
+            <?php
+          } ?> d-inline-block'>
             <h2><?php echo $donnees['nom']; ?></h2>
-            <p><?php echo $donnees['objectif']; ?></p>
-            <p>responsable : <?php echo $donnees['responsable']; ?></p>
-            <section class='row'>
-              <form action="../control/controltache.php" method="post">
-                <input class='' type='text' name="idCategorie" value="<?php echo $donnees['id_Categorie'] ?>">
-                <input class='btn btn-primary' type="submit" value="Afficher Tache">
-              </form>
+            <div class="card-block">
+              <p><?php echo $donnees['objectif']; ?></p>
+              <p>responsable : <?php echo $donnees['responsable']; ?></p>
+            </div>
+            <section class='card-footer row'>
+              <?php if ($donnees['termine'] == 0){
+                ?>
+                <form action="../control/controltache.php" method="post">
+                  <input style='display:none' type='text' name="idCategorie" value="<?php echo $donnees['id_Categorie'] ?>">
+                  <input class='btn btn-primary' type="submit" value="Afficher Tache">
+                </form>
+                <form class="" action="../control/controlcategorie.php" method="post">
+                  <input style='display:none' type='text' name="id_Corbeille_Categorie" value="<?php echo $donnees['id_Categorie'] ?>">
+                  <input class='btn btn-danger' type="submit" value="termine">
+                </form>
+                <?php
+              }
+              else{
+                ?>
+                <form class="" action="../control/controlcategorie.php" method="post">
+                  <input style='display:none' type='text' name="id_Remettre_Categorie" value="<?php echo $donnees['id_Categorie'] ?>">
+                  <input class='btn btn-primary' type="submit" value="remettre">
+                </form>
+                <?php
+              } ?>
             </section>
           </section>
           <?php

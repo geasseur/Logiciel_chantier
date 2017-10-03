@@ -17,58 +17,92 @@
     </head>
     <header class='container-fluid'>
       <h1>liste Chantier</h1>
-      <form id="nouveauChantier" action="index.php" method="post">
-        <label for="">nom</label>
-        <input type="text" name="nom" value=""><br>
-        <label for="">responsable</label>
-        <input type="text" name="responsable" value=""><br>
 
-        <!-- debut du chantier -->
-        <label for="">debut chantier</label>
-        <input type="text" name="date_depart" value=""><br>
-
-        <!-- fin chantier -->
-        <label for="">fin chantier</label>
-        <input type="text" name="date_fin" value=""><br>
-        <label for="">resumé du chantier</label><br>
-        <textarea name="resume" rows="8" cols="45">
-        </textarea><br>
-        <label for="">type de chantier</label>
-        <select name="type_chantier">
-          <option value="maison">maison</option>
-          <option value="immeuble">immeuble</option>
-          <option value="usine">usine</option>
-        </select><br>
-        <input type="submit" value="added Chantier">
-      </form>
     </header>
     <body>
       <main class='container column justify-content-center align-items-center'>
+          <form id="nouveauChantier" class='col-6' action="index.php" method="post">
+            <h3>Nouveau chantier</h3>
+            <label for="">nom</label>
+            <input type="text" name="nom" value=""><br>
+            <label for="">responsable</label>
+            <input type="text" name="responsable" value=""><br>
+
+            <!-- debut du chantier -->
+            <label for="">debut chantier(ex : 31/12/1999)</label>
+            <input type="text" name="date_depart" value=""><br>
+
+            <!-- fin chantier -->
+            <label for="">fin chantier(ex : 31/12/1999)</label>
+            <input type="text" name="date_fin" value=""><br>
+            <label for="">resumé du chantier</label><br>
+            <textarea name="resume" rows="8" cols="45">
+            </textarea><br>
+            <label for="">type de chantier</label>
+            <select name="type_chantier">
+              <option value="maison">maison</option>
+              <option value="immeuble">immeuble</option>
+              <option value="usine">usine</option>
+            </select><br>
+            <input type="submit" value="added Chantier">
+          </form>
+        <h2>Chantier en cours</h2>
+        <section class='d-flex justify-ccontent-around flex-wrap'>
         <?php
         while ($donnees = $chantier->fetch()) {
           ?>
-          <section class='col-xs-12 col-md-5 col-lg-3 bg-warning d-inline-block mt-2 mb-2'>
-            <h2><?php echo $donnees['nom']; ?></h2>
-            <small>Depart :<?php echo $donnees['date_depart']; ?></small>
-            <small>Fin :<?php echo $donnees['date_fin']; ?></small>
-            <p><?php echo $donnees['resume']; ?></p>
-            <p><?php echo $donnees['responsable']; ?></p>
-            <p>Chantier de type: <?php echo $donnees['type_chantier']; ?></p>
-            <section class='row'>
-              <form class='col-5' action="control/controlcategorie.php" method="post">
+          <section class='card col-xs-12 col-md-5 col-lg-3 <?php
+            if ($donnees['en_cours'] == 1) {
+              ?>
+              bg-success
+              <?php
+            }
+            else{
+              ?>
+              bg-danger
+              <?php
+            }
+          ?> d-inline-block mt-2 mb-2'>
+            <section>
+              <h2><?php echo $donnees['nom']; ?></h2>
+              <small>Depart :<?php echo $donnees['date_depart']; ?></small>
+              <small>Fin :<?php echo $donnees['date_fin']; ?></small>
+            </section>
+            <section class='card-block'>
+              <p class='card-text'>objectif : <?php echo $donnees['resume']; ?></p>
+              <p>responsable : <?php echo $donnees['responsable']; ?></p>
+              <p>Chantier de type: <?php echo $donnees['type_chantier']; ?></p>
+            </section>
+
+              <?php if ($donnees['en_cours'] == 1) {
+                // display button for go to categories or for deleted
+              ?>
+              <!-- go to categories -->
+              <form class='col-5 d-inline-block' action="control/controlcategorie.php" method="post">
                 <input style='display:none;' type="text" name='id' value="<?php echo $donnees['id'] ?>">
                 <input style='display:none;' type="text" name='nom' value="<?php echo $donnees['nom'] ?>">
                 <input class='btn btn-primary' type="submit" value="Categorie">
               </form>
-              <form class="col-6" action="index.php" method="post">
-                <input style='display:none;' type="text" name='id' value="<?php echo $donnees['id'] ?>">
+              <!-- ended Chantier  -->
+              <form class="col-5 d-inline-block" action="index.php" method="post">
+                <input style='display:none'; type="text" name='id_termine' value="<?php echo $donnees['id'] ?>">
                 <input class='btn btn-danger' type="submit" value="Terminé">
               </form>
-            </section>
+            <?php }
+            else {
+              ?>
+              <!-- activate Chantier -->
+              <form class="" action="index.php" method="post">
+                <input style='display:none;' type="text" name='id_Chantier_Corbeille' value="<?php echo $donnees['id'] ?>">
+                <input class='btn btn-primary' type="submit" value="Non Terminé">
+              </form>
+              <?php
+            } ?>
           </section>
           <?php
         }?>
       </main>
+      </section>
       <footer class='bg-inverse'>
         <p class='text-white'>Propriété de Wolf head studio</p>
       </footer>
