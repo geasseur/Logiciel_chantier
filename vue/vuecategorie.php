@@ -10,9 +10,9 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
-        <link rel="../stylesheet" href="css/normalize.css">
-        <link rel="../stylesheet" href="css/main.css">
-        <link rel="../stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="../css/normalize.css">
+        <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../css/style.css">
         <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <header class='container-fluid'>
@@ -44,11 +44,11 @@
       </form>
     </header>
     <body>
-      <main class='container column justify-content-center align-items-center'>
+      <main class='row justify-content-around align-items-center'>
         <?php
         foreach($categories as $donnees){
           ?>
-          <section class='col-xs-12 col-md-5 col-lg-3 <?php if ($donnees['termine'] == 0){
+          <section class='card col-xs-12 col-md-5 col-lg-3 <?php if ($donnees['termine'] == 0){
             ?>
             bg-success
             <?php
@@ -59,9 +59,11 @@
             <?php
           } ?> d-inline-block'>
             <h2><?php echo $donnees['nom']; ?></h2>
-            <p><?php echo $donnees['objectif']; ?></p>
-            <p>responsable : <?php echo $donnees['responsable']; ?></p>
-            <section class='row'>
+            <div class="card-block">
+              <p><?php echo $donnees['objectif']; ?></p>
+              <p>responsable : <?php echo $donnees['responsable']; ?></p>
+            </div>
+            <section class='card-footer row'>
               <?php if ($donnees['termine'] == 0){
                 ?>
                 <form action="../control/controltache.php" method="post">

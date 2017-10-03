@@ -29,6 +29,37 @@ catch (Exception $e){
     header('Location:index.php');
   }
 
+  function connexionUser($pseudo, $password){
+    global $bdd;
+    $test_connexion = $bdd->query('SELECT pseudo,user_password FROM utilisateur where pseudo = "'.$pseudo.'"');
+    while($donnees = $test_connexion->fetch()){
+      $testPassword = password_verify($password, $donnees['user_password']);
+      var_dump($donnees['user_password']);
+      var_dump($password);
+      var_dump($testPassword);
+      if ($testPassword == true) {
+        $_SESSION['pseudo'] = $donnees['pseudo'];
+        var_dump($_SESSION['pseudo']);
+      }
+      else{
+        echo 'raté';
+      }
+    }
+  }
+
+  function addedUser($pseudo, $user_password, $prenom, $nom){
+    global $bdd;
+    $req = $bdd->prepare('INSERT INTO utilisateur(pseudo, user_password, user_img, email, prenom, nom) VALUES (:pseudo, :user_password, :user_img, :email, :prenom, :nom)');
+    $req->execute(array(
+      'pseudo'=>$pseudo,
+      'user_password'=>password_hash($user_password, PASSWORD_BCRYPT),
+      'email'=> $email,
+      'prenom' => $prenom,
+      'nom' => $nom
+    ));
+    $_SESSION['pseudo'] = $pseudo;
+  }
+
   function endedChantier($id){
     global $bdd;
     $Chantier = $bdd->query('UPDATE Chantier set en_cours = 0 where id = "'.$id.'"');

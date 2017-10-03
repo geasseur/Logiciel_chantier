@@ -2,6 +2,10 @@
 include('model/modelindex.php');
 $chantier = displayChantier();
 
+if (isset($_POST['test_pseudo']) and isset($_POST['test_password']) and !empty($_POST['test_pseudo']) and !empty($_POST['test_password'])){
+  connexion($_POST['pseudo'],$_POST['password']);
+}
+
 if (isset($_POST['nom']) and isset($_POST['responsable']) and isset($_POST['date_depart']) and isset($_POST['date_fin']) and isset($_POST['resume']) and isset($_POST['type_chantier']) ) {
   $nom=$_POST['nom'];
   $responsable = $_POST['responsable'];
