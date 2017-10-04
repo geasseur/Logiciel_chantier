@@ -15,12 +15,41 @@
         <link rel="stylesheet" href="css/style.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <header class='container-fluid'>
-      <h1>liste Chantier</h1>
-
+    <header class='p-4'>
+      <h1 class='p-3'>liste Chantier</h1>
+      <section class='col-lg-3 card d-inline-block'>
+        <section class='d-flex'>
+          <?php if(!isset($_SESSION['pseudo'])){ ?>
+          <form class="col-4 mb-3" action="index.php" method="post">
+            <label for="">Pseudonyme</label>
+            <input type="text" name="pseudo" value="">
+            <label for="">Mot de passe</label>
+            <input type="password" name="password" value="">
+            <input class='btn btn-primary mt-2 mb-2' type="submit" value="connexion">
+          </form>
+          <?php } ?>
+        </section>
+        <section class='d-flex'>
+          <?php if(!isset($_SESSION['pseudo'])){ ?>
+            <form class="mb-3" action="control/controlcompte.php" method="post">
+              <input class='btn btn-primary' type="submit" value="se creer un compte">
+            </form>
+          <?php } ?>
+        </section>
+        <section id='sectionDeco'>
+          <?php if(isset($_SESSION['pseudo'])){?>
+            <form  id='Deco' class="col-12" action="index.php" method="post">
+              <input style='display:none' type="text" name="deco" value="<?php echo $_SESSION['pseudo'] ?>">
+              <input class='btn btn-danger' type="submit" name="" value="deconnexion">
+            </form>
+          <?php } ?>
+        </section>
+      </section>
     </header>
     <body>
-      <main class='container column justify-content-center align-items-center'>
+      <main class='container-fluid column justify-content-center align-items-center'>
+          <?php if (isset($_SESSION['pseudo'])) {
+          ?>
           <form id="nouveauChantier" class='col-6' action="index.php" method="post">
             <h3>Nouveau chantier</h3>
             <label for="">nom</label>
@@ -46,6 +75,7 @@
             </select><br>
             <input type="submit" value="added Chantier">
           </form>
+          <?php } ?>
         <h2>Chantier en cours</h2>
         <section class='d-flex justify-ccontent-around flex-wrap'>
         <?php

@@ -1,4 +1,18 @@
-main{
+body{
+  background-image: url(http://www.herrmann-architecte.com/ressources/common/shutterstock_40947127.jpg);
+  background-size: contain;
+  border: 1px solid #000;
+}
+#sectionDeco{
+  width : 20px;
+}
+#Deco{
+  margin-right: 0;
+}
+header{
+  background-color: rgba(13, 13, 13, 0.1);
+}
+header>section{
   border: 1px solid #000;
 }
 h1,h2{

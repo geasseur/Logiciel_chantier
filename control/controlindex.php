@@ -18,6 +18,15 @@ if (isset($_POST['nom']) and isset($_POST['responsable']) and isset($_POST['date
   addedChantier($nom, $responsable, $date_depart, $date_fin, $resume, $type_chantier);
 }
 
+if (isset($_POST['pseudo']) and isset($_POST['password'])) {
+  connexionUser($_POST['pseudo'], $_POST['password']);
+}
+
+if (isset($_POST['deco'])) {
+  deconnexionUtilisateur();
+  header('Location:index.php');
+}
+
 if (isset($_POST['id_Chantier_Corbeille']) and !empty($_POST['id_Chantier_Corbeille'])) {
   restartChantier($_POST['id_Chantier_Corbeille']);
 }
